@@ -99,7 +99,7 @@ object TrashCanBlock : Block(FabricBlockSettings.copy(Blocks.IRON_BLOCK).build()
         )
     }
 
-    override fun buildTooltip(
+    override fun appendTooltip(
         stack: ItemStack?,
         world: BlockView?,
         tooltip: MutableList<Text>?,

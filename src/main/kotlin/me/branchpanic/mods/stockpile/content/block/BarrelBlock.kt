@@ -150,13 +150,13 @@ open class BarrelBlock<T : AbstractBarrelBlockEntity<*>>(
 
     override fun getRenderType(state: BlockState?): BlockRenderType = BlockRenderType.MODEL
 
-    override fun buildTooltip(
+    override fun appendTooltip(
         stack: ItemStack?,
         world: BlockView?,
         lines: MutableList<Text>?,
         context: TooltipContext?
     ) {
-        super.buildTooltip(stack, world, lines, context)
+        super.appendTooltip(stack, world, lines, context)
 
         if (stack == null || lines == null) return
 

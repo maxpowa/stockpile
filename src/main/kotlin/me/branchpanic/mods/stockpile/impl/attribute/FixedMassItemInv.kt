@@ -46,7 +46,7 @@ class FixedMassItemInv(
             OUTBOUND_SLOT -> storage.removeAtMost(
                 storage.contents.reference.oneStackToQuantizer(),
                 simulate = true
-            ).firstStack()
+            ).firstStack().withCount(storage.contents.amount.toInt())
             else -> throw IllegalArgumentException("slot index out of bounds")
         }
 
@@ -56,7 +56,7 @@ class FixedMassItemInv(
         }
 
         if (storage.isEmpty) {
-            return storage.addAtMost(stack.toQuantifier()).isEmpty
+            return storage.addAtMost(stack.toQuantifier(), simulation == Simulation.SIMULATE).isEmpty
         }
 
         if (storage.isFull && voidExtraItems) {
@@ -68,12 +68,12 @@ class FixedMassItemInv(
 
         when {
             change > 0 -> {
-                val remainder = storage.addAtMost(change.toLong())
+                val remainder = storage.addAtMost(change.toLong(), simulation == Simulation.SIMULATE)
                 if (remainder != 0L) {
                     throw RuntimeException("lost $remainder items in a transaction")
                 }
             }
-            change < 0 -> storage.removeAtMost(abs(change).toLong())
+            change < 0 -> storage.removeAtMost(abs(change).toLong(), simulation == Simulation.SIMULATE)
         }
 
         fireListeners(this)

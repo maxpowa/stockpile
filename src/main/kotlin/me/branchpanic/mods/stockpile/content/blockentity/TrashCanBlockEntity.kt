@@ -31,7 +31,7 @@ class TrashCanBlockEntity : BlockEntity(TYPE), SidedInventory, Tickable {
             return
         }
 
-        world?.getEntities(EntityType.ITEM, Box(pos.up()), EntityPredicates.VALID_ENTITY)
+        world?.getEntitiesByType(EntityType.ITEM, Box(pos.up()), EntityPredicates.VALID_ENTITY)
             ?.forEach { e -> e.kill() }
     }
 

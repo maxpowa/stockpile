@@ -10,15 +10,15 @@ object Versions {
     const val STOCKPILE = "1.1.5"
 
     // Toolchain dependencies
-    const val MINECRAFT = "1.16.1"
-    const val YARN = "$MINECRAFT+build.21:v2"
-    const val LOADER = "0.9.0+build.204"
-    const val FABRIC = "0.16.0+build.384-1.16.1"
+    const val MINECRAFT = "1.16.4"
+    const val YARN = "$MINECRAFT+build.9:v2"
+    const val LOADER = "0.11.1"
+    const val FABRIC = "0.29.4+1.16"
 
     // Mod dependencies
     const val FABRIC_KT = "1.3.72+build.1"
-    const val LBA = "0.7.0"
-    const val HWYLA = "1.16.1-1.9.22-75"
+    const val LBA = "0.8.5"
+    const val HWYLA = "1.16.2-1.9.23-79"
 }
 
 group = "me.branchpanic.mods"

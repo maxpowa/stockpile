@@ -16,7 +16,7 @@ import net.fabricmc.fabric.api.event.client.ClientTickCallback
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.util.InputUtil
 import net.minecraft.util.hit.HitResult
-import net.minecraft.world.RayTraceContext
+import net.minecraft.world.RaycastContext
 import org.lwjgl.glfw.GLFW
 
 @Environment(EnvType.CLIENT)
@@ -59,15 +59,15 @@ object StockpileClient : ClientModInitializer {
         val traceEnd =
             eyePosition.add(lookVector.x * playerReach, lookVector.y * playerReach, lookVector.z * playerReach)
 
-        val context = RayTraceContext(
+        val context = RaycastContext(
             eyePosition,
             traceEnd,
-            RayTraceContext.ShapeType.OUTLINE,
-            RayTraceContext.FluidHandling.NONE,
+            RaycastContext.ShapeType.OUTLINE,
+            RaycastContext.FluidHandling.NONE,
             player
         )
 
-        val result = world.rayTrace(context)
+        val result = world.raycast(context)
 
         if (result.type != HitResult.Type.BLOCK) {
             return
